@@ -1,16 +1,11 @@
 import json
 import wikipedia
 
-
 wikipedia.set_lang("en")
-
 
 def search_engine(word):
         word=wikipedia.summary(word ,sentences=1)
         return word
-
-
-
 
 def lambda_handler(event, context):
         data_input=event['currentIntent']['slots']['Request']
