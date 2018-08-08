@@ -6,11 +6,8 @@ from bs4 import BeautifulSoup
 
 wikipedia.set_lang("en")
 
-
 def search_engine(word):
-
     tempword=word
-
     #Define the URL
     url = 'https://www.amazonaws.cn/en/products/'
     response = get(url)
@@ -23,8 +20,7 @@ def search_engine(word):
     #No we are going to extract the div that contains the product descriptions
     Service_containers = html_soup.find_all('div', class_ = 'columnbuilder parbase section')
     #Print for test
-    print type(Service_containers)
-    
+    print type(Service_containers)    
 
     #Our list contains None attribute, so we need to delete them first
     service_definition=[]
@@ -37,16 +33,12 @@ def search_engine(word):
         str1=service_definition[y]
         if word.lower() in str1.lower():
                 word=service_definition[y]
-                break
-        
+                break    
         
     if tempword == word:    
       word=wikipedia.summary(word ,sentences=1)
 
-
     return word
-
-
 
 
 def lambda_handler(event, context):
